@@ -7,7 +7,6 @@ import IconBtn from "../../../common/IconBtn";
 const EditSuccessStory = () => {
   const { storyId } = useParams();
   const { token } = useSelector((state) => state.profile);
-
   const [formData, setFormData] = useState({
     name: "",
     course: "",
@@ -24,8 +23,7 @@ const EditSuccessStory = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await fetchSuccessById({ storyId }, token,navigate);
-        console.log("Data to update:", result.data);
+        const result = await fetchSuccessById({ storyId }, token, navigate);
         setFormData({
           ...result.data,
           tags: result.data.tags.join(", "), // Convert tags array to a comma-separated string
@@ -37,6 +35,8 @@ const EditSuccessStory = () => {
     fetchData();
   }, [storyId, token]);
 
+  const navigate = useNavigate();
+
   // Handle form input changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -45,8 +45,6 @@ const EditSuccessStory = () => {
       [name]: type === "checkbox" ? checked : value,
     });
   };
-
-  const navigate = useNavigate();
 
   // Handle form submission
   const handleSubmit = async (e) => {
@@ -59,11 +57,8 @@ const EditSuccessStory = () => {
     };
 
     try {
-      const response = await updateSuccessStory(updatedStory, token,navigate);
-      console.log("Update response:", response);
-      navigate("/dashboard/success-stories")
-        
-
+      await updateSuccessStory(updatedStory, token, navigate);
+      navigate("/dashboard/success-stories");
     } catch (error) {
       console.error("Error updating success story:", error.message);
       alert("Failed to update success story.");
@@ -71,94 +66,161 @@ const EditSuccessStory = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
-      <IconBtn 
-          text="Back" 
-          onclick={() => navigate("/dashboard/success-stories")}
+    <div className="min-h-screen bg-black/90 p-4 md:p-8">
+      {/* Background Effects */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="animated-blob w-[600px] h-[600px] bg-blue-600/20 -left-[20%] top-[20%]" />
+        <div className="animated-blob w-[500px] h-[500px] bg-purple-600/20 -right-[10%] top-[40%]" />
+      </div>
+
+      {/* Content Container */}
+      <div className="relative z-10 max-w-4xl mx-auto pl-0 md:pl-0">
+        {/* Back Button */}
+        <IconBtn
+          text="Back"
           customClasses="w-full sm:w-auto mb-6 bg-gradient-to-r from-blue-500 to-purple-500 text-white 
             py-2 px-4 rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
-      />
-      
-      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
-        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">Edit Success Story</h1>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Name"
-            className="input-field border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <input
-            type="text"
-            name="course"
-            value={formData.course}
-            onChange={handleChange}
-            placeholder="Course"
-            className="input-field border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <input
-            type="text"
-            name="batch"
-            value={formData.batch}
-            onChange={handleChange}
-            placeholder="Batch"
-            className="input-field border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <input
-            type="text"
-            name="company"
-            value={formData.company}
-            onChange={handleChange}
-            placeholder="Company"
-            className="input-field border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <input
-            type="text"
-            name="package"
-            value={formData.package}
-            onChange={handleChange}
-            placeholder="Package (e.g., 36 LPA)"
-            className="input-field border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <input
-            type="text"
-            name="photo"
-            value={formData.photo}
-            onChange={handleChange}
-            placeholder="Photo URL"
-            className="input-field border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <textarea
-            name="story"
-            value={formData.story}
-            onChange={handleChange}
-            placeholder="Success Story"
-            className="textarea-field border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          ></textarea>
-          <input
-            type="text"
-            name="tags"
-            value={formData.tags}
-            onChange={handleChange}
-            placeholder="Tags (comma-separated)"
-            className="input-field border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <label className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              name="isFeatured"
-              checked={formData.isFeatured}
-              onChange={handleChange}
-              className="form-checkbox h-5 w-5 text-blue-600"
-            />
-            <span className="text-gray-700">Featured Story</span>
-          </label>
-          <button type="submit" className="btn-primary bg-blue-500 text-white rounded-lg p-2 hover:bg-blue-600 transition duration-200">
-            Update Story
-          </button>
-        </form>
+          onclick={() => navigate("/dashboard/success-stories")}
+        />
+
+        {/* Form Container */}
+        <div className="bg-white/10 backdrop-blur-xl rounded-xl border border-white/20 p-4 md:p-8">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-white">Edit Success Story</h2>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Name */}
+            <div className="col-span-2">
+              <label className="block mb-2 text-white/70">Name *</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white
+                          focus:outline-none focus:border-purple-500 transition-all duration-300"
+                required
+              />
+            </div>
+
+            {/* Course */}
+            <div className="col-span-2">
+              <label className="block mb-2 text-white/70">Course *</label>
+              <input
+                type="text"
+                name="course"
+                value={formData.course}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white
+                          focus:outline-none focus:border-purple-500 transition-all duration-300"
+                required
+              />
+            </div>
+
+            {/* Batch */}
+            <div className="col-span-2">
+              <label className="block mb-2 text-white/70">Batch *</label>
+              <input
+                type="text"
+                name="batch"
+                value={formData.batch}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white
+                          focus:outline-none focus:border-purple-500 transition-all duration-300"
+                required
+              />
+            </div>
+
+            {/* Company */}
+            <div className="col-span-2">
+              <label className="block mb-2 text-white/70">Company *</label>
+              <input
+                type="text"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white
+                          focus:outline-none focus:border-purple-500 transition-all duration-300"
+                required
+              />
+            </div>
+
+            {/* Package */}
+            <div className="col-span-2">
+              <label className="block mb-2 text-white/70">Package *</label>
+              <input
+                type="text"
+                name="package"
+                value={formData.package}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white
+                          focus:outline-none focus:border-purple-500 transition-all duration-300"
+                required
+              />
+            </div>
+
+            {/* Photo */}
+            <div className="col-span-2">
+              <label className="block mb-2 text-white/70">Photo URL *</label>
+              <input
+                type="text"
+                name="photo"
+                value={formData.photo}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white
+                          focus:outline-none focus:border-purple-500 transition-all duration-300"
+                required
+              />
+            </div>
+
+            {/* Story */}
+            <div className="col-span-2">
+              <label className="block mb-2 text-white/70">Success Story *</label>
+              <textarea
+                name="story"
+                value={formData.story}
+                onChange={handleChange}
+                rows="4"
+                className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white
+                          focus:outline-none focus:border-purple-500 transition-all duration-300"
+                required
+              />
+            </div>
+
+            {/* Tags */}
+            <div className="col-span-2">
+              <label className="block mb-2 text-white/70">Tags (comma-separated)</label>
+              <input
+                type="text"
+                name="tags"
+                value={formData.tags}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white
+                          focus:outline-none focus:border-purple-500 transition-all duration-300"
+              />
+            </div>
+
+            {/* Featured Story */}
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                name="isFeatured"
+                checked={formData.isFeatured}
+                onChange={handleChange}
+                className="form-checkbox h-5 w-5 text-blue-600"
+              />
+              <label className="text-white/70">Featured Story</label>
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full py-2 px-4 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white
+                        hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
+            >
+              Update Story
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
