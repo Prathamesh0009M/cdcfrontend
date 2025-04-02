@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Career Development Cell (CDC) Web Portal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A dedicated web portal for the **Career Development Cell (CDC) of Dr. Babasaheb Ambedkar Technological University (DBATU)**. This platform serves as a one-stop solution for students to access placement opportunities, career guidance, and training resources.
 
-## Available Scripts
+## Features
+- **Student & Admin Dashboards** – Separate interfaces for students, coordinators, and recruiters.
+- **Job & Internship Listings** – View and apply for job and internship opportunities.
+- **Resume & Profile Management** – Students can upload and manage their resumes and profiles.
+- **Placement Calendar** – Upcoming placement drives, company visits, and deadlines.
+- **Automated Email & Notifications** – Alerts for job postings, deadlines, and important updates.
+- **Training & Resources Section** – Access to study materials, interview tips, and company-specific guides.
+- **Company Registration & Recruitment** – Companies can register and post job openings.
+- **Secure Login & Authentication** – Only authorized students and recruiters can access the portal.
+- **Real-time Data Analytics** – Placement statistics, student participation, and application insights.
+- **Feedback & Support System** – Students and recruiters can provide feedback and request assistance.
 
-In the project directory, you can run:
+## Launch Success
+🚀 The CDC portal witnessed **high engagement from students and recruiters** within the first few days of launch, proving its necessity and effectiveness for career growth.
 
-### `npm start`
+## Tech Stack
+- **Frontend:** React, Redux, Tailwind CSS
+- **Backend:** Node.js, Express
+- **Database:** MongoDB
+- **Authentication:** JWT-based secure login
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
+```bash
+git clone https://github.com/your-username/cdc-web-portal.git
+cd cdc-web-portal
+npm install
+npm start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Contributing
+We welcome contributions! Feel free to submit issues and pull requests to enhance the platform.
 
-### `npm test`
+## Contact
+For any queries, reach out via email or open an issue on GitHub.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Empowering DBATU students with career opportunities and placement success!
