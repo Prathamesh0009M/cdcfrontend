@@ -33,7 +33,7 @@ import MainSuccessStory from "./components/core/Dashboard/successstory/SuccessSt
 import EditSuccessStory from "./components/core/Dashboard/successstory/EditSuccessStory.jsx";
 import Loader from "./components/common/Loader.jsx";
 import { useSelector } from "react-redux";
-
+import Gallery from "./pages/Gallery.jsx";
 function App() {
   const { loading } = useSelector((state) => state.auth);
 
@@ -58,6 +58,7 @@ function App() {
         <Route path="/update-password/:id" element={<UpdatePassword />} />
         <Route path="/success-story" element={<SuccessStories />} />
         <Route path="/load" element={<Loader />} />
+        <Route path="/gallery" element={<Gallery />} />
 
 
 

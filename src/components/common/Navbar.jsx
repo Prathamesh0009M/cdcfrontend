@@ -30,6 +30,7 @@ const Navbar = () => {
     { title: "Announcement", to: "/Announcement" },
     { title: "Events", to: "/events" },
     { title: "Team", to: "/team" },
+    { title: "Gallery", to: "/gallery" },
     // { title: "Glance", to: "/glance" },
     { title: "About", to: "/about" },
   ];
